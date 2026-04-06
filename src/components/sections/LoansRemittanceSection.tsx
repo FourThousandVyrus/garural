@@ -39,10 +39,10 @@ const loanTypes = [
 
 export default function LoansRemittanceSection() {
   return (
-    <section id="loans" className="py-24 md:py-32 relative overflow-hidden" style={{ background: '#0A1628' }}>
+    <section id="loans" className="py-24 md:py-32 relative overflow-hidden" style={{ background: '#103d1e' }}>
       {/* Background glows */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-[#D4A017]/5 rounded-full blur-[100px]" />
-      <div className="absolute bottom-0 left-0 w-72 h-72 bg-emerald-500/5 rounded-full blur-[80px]" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-[#ffd400]/10 rounded-full blur-[100px]" />
+      <div className="absolute bottom-0 left-0 w-72 h-72 bg-white/6 rounded-full blur-[80px]" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
@@ -56,10 +56,10 @@ export default function LoansRemittanceSection() {
             <motion.div variants={fadeInLeft}>
               <span className="text-[#F0C75E] text-sm uppercase tracking-widest">Financing Solutions</span>
               <h2 className="mt-4 font-bold text-3xl md:text-4xl text-white">
-                Loans That Empower Your <span className="text-[#F0C75E]">Dreams</span>
+                Loans That Empower Your <span className="text-[#ffd400]">Plans</span>
               </h2>
               <p className="mt-4 text-white/60 max-w-md">
-                From personal milestones to business growth, our flexible loan products are designed to support you at every stage.
+                From school fees to working capital, our loan products are designed for real everyday needs and backed by direct branch support.
               </p>
             </motion.div>
 
@@ -72,7 +72,7 @@ export default function LoansRemittanceSection() {
                   whileHover={{ x: 8 }}
                   className="group flex gap-5 p-5 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-[#D4A017]/30 transition-all duration-300 cursor-pointer"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-[#D4A017]/10 text-[#F0C75E] flex items-center justify-center flex-shrink-0 group-hover:bg-[#D4A017]/20 transition-colors">
+                  <div className="w-12 h-12 rounded-xl bg-[#ffd400]/10 text-[#ffd400] flex items-center justify-center flex-shrink-0 group-hover:bg-[#ffd400]/20 transition-colors">
                     {loan.icon}
                   </div>
                   <div>
@@ -84,7 +84,21 @@ export default function LoansRemittanceSection() {
             </div>
 
             <motion.div variants={fadeInUp} className="mt-10">
-              <Button variant="gold" size="md">Apply for a Loan</Button>
+              <Button variant="gold" size="md">Speak to a Loan Officer</Button>
+            </motion.div>
+
+            {/* Lifestyle photo — TODO: Replace with actual photo of a Ghanaian trader or farmer customer */}
+            <motion.div variants={fadeInUp} className="mt-8 relative rounded-2xl overflow-hidden h-52">
+              <img
+                src="https://picsum.photos/seed/garural-loans-market/700/350"
+                alt="Small business owner supported by a Garural Bank loan"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#0b2b15]/70 to-transparent" />
+              <div className="absolute top-1/2 -translate-y-1/2 left-6 text-white">
+                <p className="text-xs uppercase tracking-widest text-[#ffd400]">Real support</p>
+                <p className="mt-1 text-lg font-bold leading-tight">For traders, farmers,<br />and families.</p>
+              </div>
             </motion.div>
           </motion.div>
 
@@ -96,12 +110,12 @@ export default function LoansRemittanceSection() {
             viewport={{ once: true, margin: '-100px' }}
           >
             <motion.div variants={fadeInRight}>
-              <span className="text-emerald-400 text-sm uppercase tracking-widest">Money Transfers</span>
+              <span className="text-[#ffd400] text-sm uppercase tracking-widest">Money Transfers</span>
               <h2 className="mt-4 font-bold text-3xl md:text-4xl text-white">
-                Receive Money From <span className="text-emerald-400">Anywhere</span>
+                Receive Money From <span className="text-[#ffd400]">Anywhere</span>
               </h2>
               <p className="mt-4 text-white/60 max-w-md">
-                Fast, secure international remittance services. Receive money transfers from loved ones abroad directly into your GA Rural Bank account.
+                Fast, secure remittance support for customers receiving funds from family, partners, and loved ones at home or abroad.
               </p>
             </motion.div>
 
@@ -126,7 +140,7 @@ export default function LoansRemittanceSection() {
                 { label: 'Partners', value: '10+' },
               ].map((item) => (
                 <div key={item.label} className="text-center p-4 rounded-xl bg-white/5 border border-white/10">
-                  <div className="text-xl font-bold text-emerald-400">{item.value}</div>
+                  <div className="text-xl font-bold text-[#ffd400]">{item.value}</div>
                   <div className="text-white/40 text-xs mt-1">{item.label}</div>
                 </div>
               ))}

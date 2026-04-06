@@ -5,6 +5,10 @@
   --color-foreground: #171717;
   --font-sans: var(--font-body);
   --font-mono: var(--font-accent);
+  --color-brand-green: #103d1e;
+  --color-brand-green-deep: #0b2b15;
+  --color-brand-gold: #ffd400;
+  --color-brand-cream: #fffbea;
 }
 
 html {
@@ -16,17 +20,17 @@ html {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0A1628;
+  background: #0b2b15;
 }
 ::-webkit-scrollbar-thumb {
-  background: #D4A017;
+  background: #103d1e;
   border-radius: 4px;
 }
 
 /* Selection color */
 ::selection {
-  background-color: rgba(212, 160, 23, 0.3);
-  color: #0A1628;
+  background-color: rgba(255, 212, 0, 0.45);
+  color: #103d1e;
 }
 
 /* Gradient shift animation for CTA banner */

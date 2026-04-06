@@ -15,11 +15,11 @@ interface ButtonProps {
 }
 
 const variantStyles = {
-  gold: 'bg-[#D4A017] hover:bg-[#B8860B] text-[#0A1628] font-semibold shadow-md hover:shadow-[0_10px_40px_rgba(212,160,23,0.3)]',
+  gold: 'bg-[#103d1e] hover:bg-[#0b2b15] text-white font-semibold shadow-md hover:shadow-[0_10px_30px_rgba(16,61,30,0.25)]',
   outline: 'border-2 border-white/30 text-white hover:bg-white/10 hover:border-white/50',
-  ghost: 'text-[#D4A017] hover:text-[#B8860B] hover:bg-[#D4A017]/10',
-  dark: 'bg-[#0A1628] text-white hover:bg-[#121F3D] font-semibold shadow-md',
-  'outline-dark': 'border-2 border-[#0A1628]/30 text-[#0A1628] hover:bg-[#0A1628]/5',
+  ghost: 'text-[#103d1e] hover:text-[#0b2b15] hover:bg-[#103d1e]/8',
+  dark: 'bg-[#0b2b15] text-white hover:bg-[#103d1e] font-semibold shadow-md',
+  'outline-dark': 'border-2 border-[#103d1e]/25 text-[#103d1e] hover:bg-[#103d1e]/5',
 };
 
 const sizeStyles = {

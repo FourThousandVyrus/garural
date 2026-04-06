@@ -10,7 +10,7 @@ export default function CTABannerSection() {
       <div
         className="absolute inset-0"
         style={{
-          background: 'linear-gradient(90deg, #D4A017, #B8860B, #F0C75E, #D4A017)',
+          background: 'linear-gradient(90deg, #fff6bf, #ffd400, #f2d75e, #fff6bf)',
           backgroundSize: '200% 100%',
           animation: 'gradientShift 6s ease infinite',
         }}
@@ -32,7 +32,7 @@ export default function CTABannerSection() {
           viewport={{ once: true }}
           className="font-extrabold text-3xl md:text-5xl text-[#0A1628]"
         >
-          Ready to Start Your Financial Journey?
+          Ready to Bank with Confidence?
         </motion.h2>
 
         <motion.p
@@ -42,7 +42,7 @@ export default function CTABannerSection() {
           transition={{ delay: 0.15 }}
           className="mt-4 text-[#0A1628]/70 text-lg max-w-2xl mx-auto"
         >
-          Join over 100,000 Ghanaians who trust GA Rural Bank for their financial needs. Opening an account takes just minutes.
+          Open an account in branch, then activate Mobile Banking with {"*365*212#"} for fast access on the phone you already use every day.
         </motion.p>
 
         <motion.div
@@ -53,7 +53,7 @@ export default function CTABannerSection() {
           className="mt-8 flex flex-col sm:flex-row gap-4 justify-center"
         >
           <Button variant="dark" size="lg">Open an Account Today</Button>
-          <Button variant="outline-dark" size="lg">Call Us: 0302 900 120</Button>
+          <Button variant="outline-dark" size="lg">Dial *365*212#</Button>
         </motion.div>
       </div>
     </section>

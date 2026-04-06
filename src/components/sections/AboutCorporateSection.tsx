@@ -3,14 +3,15 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import SectionHeading from '@/components/ui/SectionHeading';
-import { fadeInUp, staggerContainer } from '@/lib/animations';
+import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer } from '@/lib/animations';
+import { SITE_CONFIG } from '@/lib/constants';
 
 const milestones = [
   { year: '1984', title: 'Establishment', description: "Commissioned as Ghana's 92nd Rural Bank in December 1984, serving the Ga communities." },
   { year: '1990s', title: 'Community Growth', description: 'Expanded branch network across the Greater Accra Region, deepening community roots.' },
-  { year: '2000s', title: 'Digital Transformation', description: 'Adopted modern banking technologies including electronic payments and computerized systems.' },
-  { year: '2010s', title: 'Mobile & E-Banking', description: 'Launched mobile banking, E-Zwich services, and online platforms for modern customers.' },
-  { year: 'Today', title: '40+ Years Strong', description: 'Serving 100,000+ customers with 15+ branches, continuing our mission of community-first banking.' },
+  { year: '2000s', title: 'Service Modernization', description: 'Expanded everyday banking services with stronger internal systems and customer support.' },
+  { year: '2010s', title: 'Mobile Banking', description: 'Introduced Mobile Banking through USSD together with E-Zwich and branch-led onboarding.' },
+  { year: 'Today', title: '40+ Years Strong', description: 'Still rooted in community trust, with Mobile Banking access and branch support for daily life.' },
 ];
 
 const values = [
@@ -24,7 +25,7 @@ const values = [
       <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
     </svg>
   )},
-  { title: 'Innovation', description: 'Embracing technology to make banking accessible to all.', icon: (
+  { title: 'Access', description: 'Making Mobile Banking available on everyday phones through USSD.', icon: (
     <svg className="w-8 h-8 text-[#D4A017]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
       <path strokeLinecap="round" strokeLinejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
     </svg>
@@ -46,8 +47,62 @@ export default function AboutCorporateSection() {
         <SectionHeading
           overline="Our Story"
           title="40+ Years of Community Banking"
-          description="From a small rural bank to a trusted financial partner — our journey is one of growth, resilience, and community."
+          description="From a small rural bank to a trusted financial partner, our story is still rooted in branch service, community relationships, and practical mobile access."
         />
+
+        {/* Community photo split — TODO: Replace src with actual Garural Bank photos */}
+        <div className="mt-16 grid lg:grid-cols-2 gap-6 rounded-3xl overflow-hidden shadow-lg">
+          {/* Large community photo */}
+          <motion.div
+            variants={fadeInLeft}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="relative aspect-[4/3] lg:aspect-auto"
+          >
+            <img
+              src="https://picsum.photos/seed/garural-branch/800/600"
+              alt="Garural Bank branch — community banking in Amasaman"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-[#0b2b15]/30" />
+            <div className="absolute bottom-6 left-6">
+              <span className="inline-block rounded-full bg-[#ffd400] px-4 py-2 text-xs font-bold text-[#103d1e] uppercase tracking-wider shadow">
+                Serving Ghana since 1984
+              </span>
+            </div>
+          </motion.div>
+
+          {/* Side-by-side smaller photos */}
+          <motion.div
+            variants={fadeInRight}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-rows-2 gap-6"
+          >
+            <div className="relative overflow-hidden rounded-2xl">
+              {/* TODO: Replace with actual in-branch customer service photo */}
+              <img
+                src="https://picsum.photos/seed/garural-customers/800/400"
+                alt="Garural Bank customers at a branch"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-[#103d1e]/20" />
+            </div>
+            <div className="relative overflow-hidden rounded-2xl">
+              {/* TODO: Replace with actual mobile banking / USSD usage photo */}
+              <img
+                src="https://picsum.photos/seed/garural-mobile/800/400"
+                alt="Customer using Garural Mobile Banking on a phone"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute bottom-4 left-4 right-4 rounded-xl bg-white/90 px-4 py-3 text-xs font-semibold text-[#103d1e] shadow">
+                Mobile Banking · Dial {SITE_CONFIG.mobileBankingCode}
+              </div>
+            </div>
+          </motion.div>
+        </div>
 
         {/* Timeline */}
         <div ref={timelineRef} className="mt-20 relative">

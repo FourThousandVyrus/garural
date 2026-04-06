@@ -4,17 +4,19 @@ import { motion } from 'framer-motion';
 import SectionHeading from '@/components/ui/SectionHeading';
 import IconBox from '@/components/ui/IconBox';
 import { staggerContainer, fadeInUp } from '@/lib/animations';
+import { SITE_CONFIG } from '@/lib/constants';
 
 const services = [
-  { title: 'Investment Products', description: 'Grow your wealth with competitive fixed deposit and treasury bill investment options.', icon: 'chart-line', color: 'gold' },
-  { title: 'Mobile Banking', description: 'Bank anytime, anywhere. Check balances, transfer funds, and pay bills from your phone.', icon: 'smartphone', color: 'blue' },
+  { title: 'Dial Once, Bank Fast', description: `Use ${SITE_CONFIG.mobileBankingCode} to access Mobile Banking on any phone, without an app or internet bundle.`, icon: 'smartphone', color: 'green' },
+  { title: 'Balance & Transfers', description: 'Check balances, move funds, and stay in control when you are away from a branch.', icon: 'chart-line', color: 'gold' },
+  { title: 'Bills & Airtime', description: 'Handle day-to-day needs from your phone, including airtime top-ups and supported bill payments.', icon: 'receipt', color: 'emerald' },
   { title: 'E-Zwich Services', description: 'Access electronic payment services with the national biometric smartcard system.', icon: 'credit-card', color: 'purple' },
-  { title: 'Bill Payments', description: 'Pay ECG, water, and utility bills directly through your bank account — fast and hassle-free.', icon: 'receipt', color: 'emerald' },
-  { title: 'Cheque Clearing', description: 'Modern cheque codeline clearing with cheque truncation technology for faster processing.', icon: 'document-check', color: 'orange' },
-  { title: 'Ghana Card Services', description: 'Update your records with the Ghana Card — the only acceptable ID for financial transactions.', icon: 'id-card', color: 'red' },
+  { title: 'Cheque & Branch Support', description: 'Use Mobile Banking for quick actions, then rely on nearby branches for deeper support.', icon: 'document-check', color: 'orange' },
+  { title: 'Ghana Card Updates', description: 'Keep your records current with Ghana Card updates and branch-led onboarding support.', icon: 'id-card', color: 'red' },
 ];
 
 const colorMap: Record<string, { bg: string; text: string; border: string; borderHover: string }> = {
+  green:   { bg: 'bg-[#103d1e]/10', text: 'text-[#103d1e]', border: 'border-[#103d1e]/15', borderHover: 'hover:border-l-[#103d1e]' },
   gold:    { bg: 'bg-[#D4A017]/10', text: 'text-[#D4A017]', border: 'border-[#D4A017]/20', borderHover: 'hover:border-l-[#D4A017]' },
   blue:    { bg: 'bg-blue-500/10',  text: 'text-blue-500',  border: 'border-blue-500/20',  borderHover: 'hover:border-l-blue-500' },
   purple:  { bg: 'bg-purple-500/10', text: 'text-purple-500', border: 'border-purple-500/20', borderHover: 'hover:border-l-purple-500' },
@@ -25,13 +27,33 @@ const colorMap: Record<string, { bg: string; text: string; border: string; borde
 
 export default function InvestmentsServicesSection() {
   return (
-    <section id="investments" className="py-24 md:py-32 bg-white">
+    <section id="mobile-banking" className="py-24 md:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
-          overline="What We Offer"
-          title="Investments & Digital Services"
-          description="Beyond traditional banking — explore our suite of modern financial services built for the digital age."
+          overline="Mobile Banking"
+          title="Mobile Banking That Works on the Phone You Already Have"
+          description={`Garural Mobile Banking is powered by USSD. Dial ${SITE_CONFIG.mobileBankingCode} for fast access, then use branch support when you need help.`}
         />
+
+        <div className="mt-12 rounded-3xl border border-[#103d1e]/10 bg-[#fffbea] p-6 md:p-8">
+          <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#103d1e]">How it works</p>
+              <h3 className="mt-3 text-2xl font-bold text-[#103d1e] md:text-3xl">Call it Mobile Banking, feel the USSD speed.</h3>
+              <p className="mt-4 max-w-2xl text-sm leading-7 text-gray-700 md:text-base">
+                Dial {SITE_CONFIG.mobileBankingCode}, follow the menu, confirm with your PIN, and complete everyday banking tasks without downloading anything.
+              </p>
+            </div>
+            <div className="rounded-3xl bg-[#103d1e] p-5 text-white shadow-lg">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/70">Quick start</p>
+              <ol className="mt-4 space-y-3 text-sm leading-6 text-white/90">
+                <li>1. Dial {SITE_CONFIG.mobileBankingCode}</li>
+                <li>2. Choose the service you need</li>
+                <li>3. Confirm securely and get back to your day</li>
+              </ol>
+            </div>
+          </div>
+        </div>
 
         <motion.div
           variants={staggerContainer}
@@ -53,7 +75,7 @@ export default function InvestmentsServicesSection() {
                   <IconBox name={service.icon} />
                 </div>
 
-                <h3 className="font-semibold text-lg text-[#0A1628]">{service.title}</h3>
+                <h3 className="font-semibold text-lg text-[#103d1e]">{service.title}</h3>
                 <p className="mt-2 text-gray-600 text-sm leading-relaxed">{service.description}</p>
 
                 <div className={`mt-4 ${colors.text} text-sm font-medium flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300`}>

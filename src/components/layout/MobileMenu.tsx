@@ -13,7 +13,7 @@ export default function MobileMenu({ onClose }: MobileMenuProps) {
   return (
     <motion.div
       className="fixed inset-0 z-40 backdrop-blur-2xl flex flex-col items-center justify-center gap-8"
-      style={{ backgroundColor: 'rgba(10, 22, 40, 0.95)' }}
+      style={{ backgroundColor: 'rgba(11, 43, 21, 0.96)' }}
       initial={{ x: '100%' }}
       animate={{ x: 0 }}
       exit={{ x: '100%' }}
@@ -29,7 +29,7 @@ export default function MobileMenu({ onClose }: MobileMenuProps) {
           <Link
             href={link.href}
             onClick={onClose}
-            className="text-white text-3xl font-bold hover:text-[#F0C75E] transition-colors"
+            className="text-white text-3xl font-bold hover:text-[#ffd400] transition-colors"
           >
             {link.label}
           </Link>
@@ -41,7 +41,7 @@ export default function MobileMenu({ onClose }: MobileMenuProps) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6 }}
       >
-        <Button variant="gold" size="lg">Open Account</Button>
+        <Button variant="gold" size="lg">Open an Account</Button>
       </motion.div>
     </motion.div>
   );

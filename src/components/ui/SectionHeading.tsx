@@ -27,7 +27,7 @@ export default function SectionHeading({
     >
       <motion.span
         variants={fadeInUp}
-        className="inline-block text-[#D4A017] font-sans text-sm uppercase tracking-[0.15em] font-medium"
+        className="inline-block text-[#103d1e] font-sans text-sm uppercase tracking-[0.15em] font-semibold"
       >
         {overline}
       </motion.span>
@@ -35,7 +35,7 @@ export default function SectionHeading({
       <motion.h2
         variants={fadeInUp}
         className={`mt-3 font-bold text-3xl md:text-4xl lg:text-5xl ${
-          dark ? 'text-white' : 'text-[#0A1628]'
+          dark ? 'text-white' : 'text-[#103d1e]'
         }`}
       >
         {title}
@@ -52,7 +52,7 @@ export default function SectionHeading({
 
       <motion.div
         variants={fadeInUp}
-        className={`mt-6 h-1 w-16 rounded-full bg-gradient-to-r from-[#F0C75E] to-[#B8860B] ${
+        className={`mt-6 h-1 w-16 rounded-full bg-gradient-to-r from-[#103d1e] via-[#2e6b3f] to-[#ffd400] ${
           align === 'left' ? '' : 'mx-auto'
         }`}
       />

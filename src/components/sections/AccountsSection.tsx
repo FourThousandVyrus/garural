@@ -10,14 +10,17 @@ const accounts = [
   {
     title: 'Current Account',
     description:
-      'Designed to make running your business easier with seamless daily transactions, cheque facilities, and business banking tools.',
+      'Designed to make running your business easier with seamless daily transactions, cheque facilities, and branch-backed support.',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0" />
       </svg>
     ),
     gradient: 'from-blue-500 to-indigo-600',
-    features: ['Cheque Book', 'Overdraft Facility', 'Internet Banking', 'Business Tools'],
+    features: ['Cheque Book', 'Overdraft Facility', 'Mobile Banking via USSD', 'Business Tools'],
+    // TODO: Replace with actual photo of a Ghanaian business owner / trader
+    photo: 'https://picsum.photos/seed/garural-trader/400/200',
+    photoAlt: 'Ghanaian trader managing a business with a Garural Current Account',
   },
   {
     title: 'Savings Account',
@@ -29,12 +32,15 @@ const accounts = [
       </svg>
     ),
     gradient: 'from-[#F0C75E] to-[#B8860B]',
-    features: ['Competitive Rates', 'Flexible Deposits', 'No Hidden Fees', 'Mobile Access'],
+    features: ['Competitive Rates', 'Flexible Deposits', 'No Hidden Fees', 'Quick balance checks'],
+    // TODO: Replace with actual photo of a family saving at Garural Bank
+    photo: 'https://picsum.photos/seed/garural-family-savings/400/200',
+    photoAlt: 'Ghanaian family growing savings at Garural Bank',
   },
   {
     title: 'eSusu Account',
     description:
-      'Built for regular income earners and businesses — a modern take on the traditional Susu savings system.',
+      'Built for regular income earners and businesses - a modern take on the traditional Susu savings system.',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
@@ -42,6 +48,9 @@ const accounts = [
     ),
     gradient: 'from-emerald-500 to-teal-600',
     features: ['Daily Collections', 'Micro Savings', 'Loan Eligibility', 'Community Driven'],
+    // TODO: Replace with actual photo of a community saving group / eSusu group
+    photo: 'https://picsum.photos/seed/garural-susu-group/400/200',
+    photoAlt: 'Community eSusu savings group at Garural Bank',
   },
 ];
 
@@ -52,7 +61,7 @@ export default function AccountsSection() {
         <SectionHeading
           overline="Our Accounts"
           title="Choose the Right Account for You"
-          description="Whether you're saving for tomorrow or managing today, we have an account tailored for your needs."
+          description="From everyday banking to disciplined savings, each account is designed to work with branch service and Mobile Banking via USSD."
         />
 
         <motion.div
@@ -65,16 +74,24 @@ export default function AccountsSection() {
           {accounts.map((account) => (
             <motion.div key={account.title} variants={fadeInUp}>
               <GlassCard className="group relative overflow-hidden h-full" tiltEnabled>
-                {/* Gradient accent bar */}
-                <div className={`h-1.5 w-full bg-gradient-to-r ${account.gradient} rounded-t-2xl`} />
-
-                <div className="p-8">
-                  {/* Icon */}
-                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${account.gradient} flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                {/* Lifestyle photo header */}
+                <div className="relative h-44 overflow-hidden rounded-t-2xl">
+                  <img
+                    src={account.photo}
+                    alt={account.photoAlt}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className={`absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent`} />
+                  {/* Icon badge */}
+                  <div className={`absolute bottom-3 left-4 w-12 h-12 rounded-2xl bg-gradient-to-br ${account.gradient} flex items-center justify-center text-white shadow-lg`}>
                     {account.icon}
                   </div>
+                </div>
 
-                  <h3 className="font-bold text-xl text-[#0A1628]">{account.title}</h3>
+                <div className="p-8 pt-6">
+                  {/* Title */}
+
+                  <h3 className="font-bold text-xl text-[#103d1e]">{account.title}</h3>
                   <p className="mt-3 text-gray-600 text-sm leading-relaxed">{account.description}</p>
 
                   {/* Features */}

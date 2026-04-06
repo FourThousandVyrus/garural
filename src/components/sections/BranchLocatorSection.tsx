@@ -19,12 +19,12 @@ export default function BranchLocatorSection() {
   const [selectedBranch, setSelectedBranch] = useState(0);
 
   return (
-    <section id="contact" className="py-24 md:py-32 bg-white">
+    <section id="branches" className="py-24 md:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           overline="Find Us"
           title="Visit a Branch Near You"
-          description="With 15+ branches across Greater Accra and beyond, we're always close to your community."
+          description="Branch service remains core to the Garural experience. Visit us for account opening, loan support, account updates, and Mobile Banking help."
         />
 
         <div className="mt-16 grid lg:grid-cols-5 gap-8">
@@ -68,12 +68,27 @@ export default function BranchLocatorSection() {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3 }}
                 className="rounded-2xl p-8 md:p-10 text-white h-full flex flex-col justify-between"
-                style={{ background: '#0A1628' }}
+                style={{ background: '#103d1e' }}
               >
                 <div>
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-10 h-10 rounded-xl bg-[#D4A017]/20 flex items-center justify-center">
-                      <svg className="w-5 h-5 text-[#F0C75E]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  {/* Branch photo — TODO: Replace src with actual branch exterior photo */}
+                <div className="relative rounded-2xl overflow-hidden h-44 mb-6">
+                  <img
+                    src={`https://picsum.photos/seed/garural-branch-${selectedBranch}/700/280`}
+                    alt={`${branches[selectedBranch].name} exterior`}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-[#0b2b15]/30" />
+                  <div className="absolute bottom-3 left-4">
+                    <span className="rounded-full bg-[#ffd400] px-3 py-1 text-[10px] font-bold text-[#103d1e] uppercase tracking-wide">
+                      {branches[selectedBranch].isHeadOffice ? 'Head Office' : 'Branch'}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3 mb-6">
+                    <div className="w-10 h-10 rounded-xl bg-[#ffd400]/15 flex items-center justify-center">
+                      <svg className="w-5 h-5 text-[#ffd400]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
                         <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
                       </svg>
@@ -81,7 +96,7 @@ export default function BranchLocatorSection() {
                     <div>
                       <h3 className="font-bold text-xl">{branches[selectedBranch].name}</h3>
                       {branches[selectedBranch].isHeadOffice && (
-                        <span className="text-[#F0C75E] text-xs">Head Office</span>
+                        <span className="text-[#ffd400] text-xs">Head Office</span>
                       )}
                     </div>
                   </div>
@@ -123,13 +138,18 @@ export default function BranchLocatorSection() {
                 </div>
 
                 {/* Map placeholder */}
-                <div className="mt-8 h-48 bg-[#121F3D] rounded-xl flex items-center justify-center border border-white/10">
-                  <p className="text-white/30 text-sm">Interactive Map — Coming Soon</p>
+                <div id="contact" className="mt-8 rounded-xl border border-white/10 bg-[#0b2b15] p-6">
+                  <p className="text-xs uppercase tracking-[0.18em] text-white/50">Need help before visiting?</p>
+                  <div className="mt-3 space-y-2 text-sm text-white/85">
+                    <p>Call: 0302 900 120</p>
+                    <p>Email: info@garuralbank.com</p>
+                    <p>Mobile Banking: Dial *365*212#</p>
+                  </div>
                 </div>
 
                 <div className="mt-6 flex gap-3">
-                  <Button variant="gold" size="sm" className="flex-1">Get Directions</Button>
-                  <Button variant="outline" size="sm" className="flex-1">Call Branch</Button>
+                  <Button variant="gold" size="sm" className="flex-1">Call Branch</Button>
+                  <Button variant="outline" size="sm" className="flex-1">Ask About Mobile Banking</Button>
                 </div>
               </motion.div>
             </AnimatePresence>
