@@ -7,16 +7,61 @@ import Button from '@/components/ui/Button';
 import { staggerContainer, fadeInUp } from '@/lib/animations';
 
 const branches = [
-  { name: 'Amasaman (Head Office)', address: 'P.O. Box AM 70, Amasaman, Accra, Ghana', phone: '0302 900 120', hours: 'Mon–Fri, 8:00 AM – 5:00 PM', isHeadOffice: true },
-  { name: 'Pokuase Branch', address: 'Pokuase, Greater Accra Region', phone: '0302 901 014', hours: 'Mon–Fri, 8:00 AM – 5:00 PM', isHeadOffice: false },
-  { name: 'Ofankor Branch', address: 'Ofankor, Greater Accra Region', phone: '0302 901 015', hours: 'Mon–Fri, 8:00 AM – 5:00 PM', isHeadOffice: false },
-  { name: 'Kasoa Branch', address: 'Kasoa, Central Region', phone: '0302 901 016', hours: 'Mon–Fri, 8:00 AM – 5:00 PM', isHeadOffice: false },
-  { name: 'Madina Branch', address: 'Madina, Greater Accra Region', phone: '0302 901 017', hours: 'Mon–Fri, 8:00 AM – 5:00 PM', isHeadOffice: false },
-  { name: 'Dome Branch', address: 'Dome, Greater Accra Region', phone: '0302 901 018', hours: 'Mon–Fri, 8:00 AM – 5:00 PM', isHeadOffice: false },
+  {
+    name: 'Amasaman (Head Office)',
+    address: 'P.O. Box AM 70, Amasaman, Accra, Ghana',
+    phone: '0302 900 120',
+    hours: 'Mon–Fri, 8:00 AM – 5:00 PM',
+    isHeadOffice: true,
+    mapQuery: 'GA Rural Bank PLC Amasaman Ghana',
+  },
+  {
+    name: 'Pokuase Branch',
+    address: 'Pokuase, Greater Accra Region',
+    phone: '0302 901 014',
+    hours: 'Mon–Fri, 8:00 AM – 5:00 PM',
+    isHeadOffice: false,
+    mapQuery: 'GA Rural Bank Pokuase Ghana',
+  },
+  {
+    name: 'Ofankor Branch',
+    address: 'Ofankor, Greater Accra Region',
+    phone: '0302 901 015',
+    hours: 'Mon–Fri, 8:00 AM – 5:00 PM',
+    isHeadOffice: false,
+    mapQuery: 'GA Rural Bank Ofankor Ghana',
+  },
+  {
+    name: 'Kasoa Branch',
+    address: 'Kasoa, Central Region',
+    phone: '0302 901 016',
+    hours: 'Mon–Fri, 8:00 AM – 5:00 PM',
+    isHeadOffice: false,
+    mapQuery: 'GA Rural Bank Kasoa Ghana',
+  },
+  {
+    name: 'Madina Branch',
+    address: 'Madina, Greater Accra Region',
+    phone: '0302 901 017',
+    hours: 'Mon–Fri, 8:00 AM – 5:00 PM',
+    isHeadOffice: false,
+    mapQuery: 'GA Rural Bank Madina Ghana',
+  },
+  {
+    name: 'Dome Branch',
+    address: 'Dome, Greater Accra Region',
+    phone: '0302 901 018',
+    hours: 'Mon–Fri, 8:00 AM – 5:00 PM',
+    isHeadOffice: false,
+    mapQuery: 'GA Rural Bank Dome Ghana',
+  },
 ];
 
 export default function BranchLocatorSection() {
   const [selectedBranch, setSelectedBranch] = useState(0);
+  const activeBranch = branches[selectedBranch];
+  const mapEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(activeBranch.mapQuery)}&output=embed`;
+  const directionsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(activeBranch.mapQuery)}`;
 
   return (
     <section id="branches" className="py-24 md:py-32 bg-white">
@@ -81,7 +126,7 @@ export default function BranchLocatorSection() {
                   <div className="absolute inset-0 bg-[#0b2b15]/30" />
                   <div className="absolute bottom-3 left-4">
                     <span className="rounded-full bg-[#ffd400] px-3 py-1 text-[10px] font-bold text-[#103d1e] uppercase tracking-wide">
-                      {branches[selectedBranch].isHeadOffice ? 'Head Office' : 'Branch'}
+                      {activeBranch.isHeadOffice ? 'Head Office' : 'Branch'}
                     </span>
                   </div>
                 </div>
@@ -94,8 +139,8 @@ export default function BranchLocatorSection() {
                       </svg>
                     </div>
                     <div>
-                      <h3 className="font-bold text-xl">{branches[selectedBranch].name}</h3>
-                      {branches[selectedBranch].isHeadOffice && (
+                      <h3 className="font-bold text-xl">{activeBranch.name}</h3>
+                      {activeBranch.isHeadOffice && (
                         <span className="text-[#ffd400] text-xs">Head Office</span>
                       )}
                     </div>
@@ -109,7 +154,7 @@ export default function BranchLocatorSection() {
                       </svg>
                       <div>
                         <p className="text-white/60 text-xs uppercase tracking-wider mb-1">Address</p>
-                        <p className="text-white text-sm">{branches[selectedBranch].address}</p>
+                        <p className="text-white text-sm">{activeBranch.address}</p>
                       </div>
                     </div>
 
@@ -120,7 +165,7 @@ export default function BranchLocatorSection() {
                       </svg>
                       <div>
                         <p className="text-white/60 text-xs uppercase tracking-wider mb-1">Phone</p>
-                        <p className="text-white text-sm">{branches[selectedBranch].phone}</p>
+                        <p className="text-white text-sm">{activeBranch.phone}</p>
                       </div>
                     </div>
 
@@ -131,19 +176,57 @@ export default function BranchLocatorSection() {
                       </svg>
                       <div>
                         <p className="text-white/60 text-xs uppercase tracking-wider mb-1">Hours</p>
-                        <p className="text-white text-sm">{branches[selectedBranch].hours}</p>
+                        <p className="text-white text-sm">{activeBranch.hours}</p>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Map placeholder */}
-                <div id="contact" className="mt-8 rounded-xl border border-white/10 bg-[#0b2b15] p-6">
-                  <p className="text-xs uppercase tracking-[0.18em] text-white/50">Need help before visiting?</p>
-                  <div className="mt-3 space-y-2 text-sm text-white/85">
-                    <p>Call: 0302 900 120</p>
-                    <p>Email: info@garuralbank.com</p>
-                    <p>Mobile Banking: Dial *365*212#</p>
+                <div className="mt-8 rounded-xl border border-white/10 bg-[#0b2b15] p-4 md:p-5">
+                  <div className="mb-3 flex items-center justify-between gap-3">
+                    <p className="text-xs uppercase tracking-[0.18em] text-white/50">Live Map Preview</p>
+                    <div className="inline-flex items-center gap-2 rounded-full border border-[#ffd400]/30 bg-[#ffd400]/10 px-2.5 py-1 text-[10px] font-semibold text-[#ffd400]">
+                      <motion.span
+                        className="inline-block h-1.5 w-1.5 rounded-full bg-[#ffd400]"
+                        animate={{ opacity: [1, 0.35, 1], scale: [1, 1.3, 1] }}
+                        transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut' }}
+                      />
+                      Live
+                    </div>
+                  </div>
+
+                  <div className="relative overflow-hidden rounded-xl border border-white/10 bg-[#0a2413]">
+                    <AnimatePresence mode="wait">
+                      <motion.iframe
+                        key={activeBranch.name}
+                        title={`Map for ${activeBranch.name}`}
+                        src={mapEmbedUrl}
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                        className="h-52 w-full"
+                        initial={{ opacity: 0.25, scale: 1.03 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0.25, scale: 0.98 }}
+                        transition={{ duration: 0.45, ease: 'easeOut' }}
+                      />
+                    </AnimatePresence>
+                    <a
+                      href={directionsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="absolute bottom-3 right-3 rounded-full border border-white/15 bg-[#103d1e]/90 px-3 py-1.5 text-[11px] font-semibold text-white hover:border-[#ffd400]/50 hover:text-[#ffd400] transition-colors"
+                    >
+                      Open Directions
+                    </a>
+                  </div>
+
+                  <div id="contact" className="mt-4 rounded-lg border border-white/10 bg-[#0f321a] p-4">
+                    <p className="text-xs uppercase tracking-[0.18em] text-white/50">Need help before visiting?</p>
+                    <div className="mt-2.5 space-y-1.5 text-sm text-white/85">
+                      <p>Call: 0302 900 120</p>
+                      <p>Email: info@garuralbank.com</p>
+                      <p>Mobile Banking: Dial *365*212#</p>
+                    </div>
                   </div>
                 </div>
 

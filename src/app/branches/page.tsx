@@ -27,6 +27,7 @@ const branches = [
     services: ['Account Opening', 'Loans & Credit', 'Mobile Banking Registration', 'E-Zwich', 'Ghana Card Updates', 'Remittance', 'Cheque Services'],
     // TODO: Replace with actual head office photo
     photo: 'https://picsum.photos/seed/garural-hq/800/500',
+    mapQuery: 'GA Rural Bank PLC Amasaman Ghana',
   },
   {
     name: 'Pokuase Branch',
@@ -38,6 +39,7 @@ const branches = [
     services: ['Account Opening', 'Deposits & Withdrawals', 'Mobile Banking Registration', 'E-Zwich'],
     // TODO: Replace with actual Pokuase branch photo
     photo: 'https://picsum.photos/seed/garural-pokuase/800/500',
+    mapQuery: 'GA Rural Bank Pokuase Ghana',
   },
   {
     name: 'Ofankor Branch',
@@ -49,6 +51,7 @@ const branches = [
     services: ['Account Opening', 'Deposits & Withdrawals', 'Mobile Banking Registration', 'E-Zwich'],
     // TODO: Replace with actual Ofankor branch photo
     photo: 'https://picsum.photos/seed/garural-ofankor/800/500',
+    mapQuery: 'GA Rural Bank Ofankor Ghana',
   },
   {
     name: 'Kasoa Branch',
@@ -60,6 +63,7 @@ const branches = [
     services: ['Account Opening', 'Deposits & Withdrawals', 'Mobile Banking Registration', 'E-Zwich', 'Loans & Credit'],
     // TODO: Replace with actual Kasoa branch photo
     photo: 'https://picsum.photos/seed/garural-kasoa/800/500',
+    mapQuery: 'GA Rural Bank Kasoa Ghana',
   },
   {
     name: 'Madina Branch',
@@ -71,6 +75,7 @@ const branches = [
     services: ['Account Opening', 'Deposits & Withdrawals', 'Mobile Banking Registration', 'E-Zwich'],
     // TODO: Replace with actual Madina branch photo
     photo: 'https://picsum.photos/seed/garural-madina/800/500',
+    mapQuery: 'GA Rural Bank Madina Ghana',
   },
   {
     name: 'Dome Branch',
@@ -82,6 +87,7 @@ const branches = [
     services: ['Account Opening', 'Deposits & Withdrawals', 'Mobile Banking Registration', 'E-Zwich'],
     // TODO: Replace with actual Dome branch photo
     photo: 'https://picsum.photos/seed/garural-dome/800/500',
+    mapQuery: 'GA Rural Bank Dome Ghana',
   },
 ];
 
@@ -159,13 +165,34 @@ export default function BranchesPage() {
                     ))}
                   </div>
 
-                  <a
-                    href={`tel:${branch.phone.replace(/\s/g, '')}`}
-                    className="mt-6 w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#103d1e] text-white text-xs font-semibold py-3 hover:bg-[#0b2b15] transition-colors"
-                  >
-                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" /></svg>
-                    Call Branch
-                  </a>
+                  <div className="mt-5 rounded-xl border border-[#103d1e]/10 overflow-hidden">
+                    <iframe
+                      title={`Map for ${branch.name}`}
+                      src={`https://www.google.com/maps?q=${encodeURIComponent(branch.mapQuery)}&output=embed`}
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      className="h-36 w-full"
+                    />
+                  </div>
+
+                  <div className="mt-6 grid grid-cols-2 gap-2">
+                    <a
+                      href={`tel:${branch.phone.replace(/\s/g, '')}`}
+                      className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#103d1e] text-white text-xs font-semibold py-3 hover:bg-[#0b2b15] transition-colors"
+                    >
+                      <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" /></svg>
+                      Call Branch
+                    </a>
+                    <a
+                      href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(branch.mapQuery)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#103d1e]/20 bg-[#f3f7ef] text-[#103d1e] text-xs font-semibold py-3 hover:bg-[#e9f1e2] transition-colors"
+                    >
+                      <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 01.553-.894L9 2m0 18l6-2m-6 2V2m6 16l5.447 2.724A1 1 0 0021 19.382V8.618a1 1 0 00-.553-.894L15 5m0 13V5m0 0L9 2" /></svg>
+                      Get Directions
+                    </a>
+                  </div>
                 </div>
               </div>
             ))}
