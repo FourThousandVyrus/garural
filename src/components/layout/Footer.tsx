@@ -43,10 +43,38 @@ const pageLinks = [
 ];
 
 const socialLinks = [
-  { label: 'Facebook', icon: 'F' },
-  { label: 'Twitter', icon: 'X' },
-  { label: 'Instagram', icon: 'I' },
-  { label: 'LinkedIn', icon: 'L' },
+  {
+    label: 'Facebook',
+    icon: (
+      <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M13.5 9H16V6h-2.5C11.57 6 10 7.57 10 9.5V12H8v3h2v6h3v-6h2.5l.5-3H13v-2.5c0-.28.22-.5.5-.5z" />
+      </svg>
+    ),
+  },
+  {
+    label: 'X',
+    icon: (
+      <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M4 4h4.2l4.35 6.2L17.8 4H20l-6.5 7.5L20 20h-4.2l-4.75-6.75L5.6 20H3.4l6.7-7.8L4 4z" />
+      </svg>
+    ),
+  },
+  {
+    label: 'Instagram',
+    icon: (
+      <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M7 3h10a4 4 0 014 4v10a4 4 0 01-4 4H7a4 4 0 01-4-4V7a4 4 0 014-4zm0 2a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2H7zm5 3.5A4.5 4.5 0 1112 18a4.5 4.5 0 010-9zm0 2A2.5 2.5 0 1012 16a2.5 2.5 0 000-5zm4.75-3a1.25 1.25 0 11-2.5 0 1.25 1.25 0 012.5 0z" />
+      </svg>
+    ),
+  },
+  {
+    label: 'LinkedIn',
+    icon: (
+      <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M6.5 8.5A1.5 1.5 0 115 7a1.5 1.5 0 011.5 1.5zM5 10h3v9H5v-9zm5 0h2.86v1.29h.04c.4-.76 1.37-1.56 2.82-1.56 3.01 0 3.57 1.98 3.57 4.56V19h-3v-4.03c0-.96-.02-2.2-1.34-2.2-1.34 0-1.55 1.05-1.55 2.13V19h-3v-9z" />
+      </svg>
+    ),
+  },
 ];
 
 export default function Footer() {
@@ -132,7 +160,7 @@ export default function Footer() {
                 aria-label={social.label}
                 className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/50 hover:bg-[#ffd400]/20 hover:text-[#ffd400] hover:border-[#ffd400]/30 transition-all duration-300"
               >
-                <span className="text-xs font-bold">{social.icon}</span>
+                {social.icon}
               </a>
             ))}
           </div>
